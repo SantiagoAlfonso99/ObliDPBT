@@ -77,7 +77,7 @@ export default function LoginScreen() {
             <Ionicons name="medkit" size={64} color="#0B2C70" />
           </Animatable.View>
 
-          <Text style={styles.title}>Huella Health</Text>
+          <Text style={styles.title}>VitaBot</Text>
 
           {/* Frases animadas */}
           <View style={styles.typingContainer}>
