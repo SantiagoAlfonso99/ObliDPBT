@@ -13,6 +13,10 @@ export default function TopBar() {
     router.push('/(tabs)/settings');
   };
 
+  const handleNotification = () => {
+    router.push('/notifications');
+  };
+
   return (
     <View style={styles.container}>
       {/* Avatar + Nombre */}
@@ -30,7 +34,7 @@ export default function TopBar() {
       <View style={styles.spacer} />
 
       {/* Notificaciones */}
-      <TouchableOpacity style={styles.iconBtn} onPress={() => alert('Sin notificaciones 👍')}>
+      <TouchableOpacity style={styles.iconBtn} onPress={handleNotification}>
         <Ionicons name="notifications" size={24} color="#fff" />
       </TouchableOpacity>
 
