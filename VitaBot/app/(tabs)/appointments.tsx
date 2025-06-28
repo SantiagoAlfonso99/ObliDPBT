@@ -45,6 +45,9 @@ export default function AppointmentsScreen() {
   const [segment, setSegment] = useState<'next'|'past'>('next');
   const [list, setList]       = useState<Appointment[]>([]);
 
+
+  const handleAction   = (label: string) => Alert.alert(label, 'Función pendiente.');
+  const handleAdd      = () => router.push('../appointments/new');
   useEffect(() => {
     // En producción filtra a partir de Date.now()
     const now = new Date();
@@ -54,7 +57,6 @@ export default function AppointmentsScreen() {
   }, [segment]);
 
   /* Acciones mock */
-  const handleAction = (label: string) => Alert.alert(label, 'Función pendiente.');
 
   return (
     <ImageBackground source={BG} style={styles.bg} resizeMode="cover">
@@ -86,6 +88,10 @@ export default function AppointmentsScreen() {
         renderItem={({item})=><ApptCard appt={item} onAction={handleAction}/>}
         ListEmptyComponent={()=><Text style={styles.empty}>Sin turnos</Text>}
       />
+      {/* FAB para agregar turno */}
+      <TouchableOpacity style={styles.fab} onPress={handleAdd}>
+        <Ionicons name="add" size={28} color="#fff" />
+      </TouchableOpacity>
     </ImageBackground>
   );
 }
@@ -169,6 +175,22 @@ function ApptCard({ appt, onAction }:{
 /* ─── Estilos ─────────────────────────── */
 const {width}=Dimensions.get('window');
 const styles=StyleSheet.create({
+  fab: {
+    position: 'absolute',
+    bottom: 28,
+    right: 28,
+    backgroundColor: colors.navy,
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+    elevation: 5,
+  },
   bg:{flex:1},
   segmentBox:{
     flexDirection:'row',
